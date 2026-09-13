@@ -28,6 +28,7 @@ const playerSchema = new mongoose.Schema(
       facebook: { type: String },
     },
     order: { type: Number, default: 0 },
+    isMvp: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

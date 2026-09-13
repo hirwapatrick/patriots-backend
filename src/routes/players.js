@@ -6,11 +6,12 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    const { position, status } = req.query;
+    const { position, status, mvp } = req.query;
     const filter = {};
     if (position) filter.position = position;
     if (status) filter.status = status;
     else filter.status = "active";
+    if (mvp === "true") filter.isMvp = true;
 
     const players = await Player.find(filter).sort({ order: 1, jerseyNumber: 1 });
     res.json(players);
